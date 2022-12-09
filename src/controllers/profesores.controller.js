@@ -47,7 +47,7 @@ export const loginProfesor = async (req, res)=>{
             res.json({"resultado": 0});
         }
         else{
-            res.json({"resultado": 1, "datos":datos});
+            res.json({"resultado": 1, "Profesor":datos[0]});
         }
     });
 }
