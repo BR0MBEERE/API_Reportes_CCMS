@@ -11,13 +11,13 @@ export const getReporesByProfId =  async(req, res)=>{
         }
         console.log(row);
         const datos = row.recordsets[0];
-        res.json(datos);
+        res.json({"Reporte":datos});
     });
 }
 
 export const getDetallesReporte = async(req, res)=>{
     const reporte = req.params;
-    const q = `SELECT FORMAT (m.Fecha, 'dd/MM/yy') as Fecha, m.Descripcion as DescDet, concat(td.Descripcion,' ',d.Marca,' ', d.Modelo, ' que se encuentra en el aula ', a.NombreAula) as Dispositivo, m.Revisado from Dispositivo d
+    const q = `SELECT FORMAT (m.Fecha, 'dd/MM/yy') as Fecha, m.Descripcion as DescDet, concat(td.Descripcion,' ',d.Marca,' ', d.Modelo, ' que se encuentra en el aula ', a.NombreAula) as Dispositivo, m.Revisado as Rev from Dispositivo d
                 inner join Malfuncion m on d.IdDispositivo = m.IdDispositivo
                 left join Aula a on a.idAula = d.Id_Aula
                 left join TipoDispositivo td on td.IdTipoDispositivo=d.IdTipoDispositivo
