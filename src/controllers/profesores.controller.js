@@ -16,7 +16,7 @@ export const getProfesores = async (req, res)=>{
 export const getProfesor = async (req, res)=>{
     console.log(req.params);
     const profe = req.params;
-    const q = `SELECT p.Nombre, p.Apellidos, pl.Username FROM Profesor_login pl left join Profesor p on p.Id_Profesor = pl.idProfesor where idProfesor = ${profe.id}`;
+    const q = `SELECT p.Nombre, p.Apellidos,p.Id_Profesor as idPorfe, pl.Username FROM Profesor_login pl left join Profesor p on p.Id_Profesor = pl.idProfesor where idProfesor = ${profe.id}`;
 
     const pool = await getConnection();
     await pool.request().query(q,(err, row) =>{
@@ -32,7 +32,7 @@ export const getProfesor = async (req, res)=>{
 export const loginProfesor = async (req, res)=>{
     const {user , pass} = req.body
     console.log(user, pass);
-    const q = `SELECT p.Nombre, p.Apellidos, pl.Username FROM Profesor_login pl left join Profesor p on p.Id_Profesor = pl.idProfesor where pl.Username = ${user} and pl.Contra = ${pass}`;
+    const q = `SELECT p.Nombre, p.Apellidos,p.Id_Profesor as idPorfe, pl.Username FROM Profesor_login pl left join Profesor p on p.Id_Profesor = pl.idProfesor where pl.Username = ${user} and pl.Contra = ${pass}`;
 
     const pool = await getConnection();
     await pool.request().query(q,(err, row) =>{
