@@ -1,5 +1,3 @@
 import app from './app';
 
 app.listen(app.get('port'));
-
-console.log('listening on port 3000');
