@@ -1,17 +1,23 @@
 import { Router } from "express";
 
-import { getAppoimentsbyEmail, getStaffMemebers, getStaffSchedule, getAppoimentsAdmins, testing } from "../controllers/appoiments.controller";
+import { getAppoimentsbyEmail, getStaffMemebers, getStaffSchedule, getAppoimentsAdmins, getStaffIdByName, getStaffMemebersById, getAppoimentsForWeek, testing } from "../controllers/appoiments.controller.js";
 
 const router = Router();
 
-router.get("/getaAppoiments/:email",getAppoimentsbyEmail);
+router.get("/getAppoiments/:email",getAppoimentsbyEmail);
+
+router.get("/getAppoimentsWeek/:email",getAppoimentsForWeek);
 
 router.get("/getStaffMemebers",getStaffMemebers);
+
+router.get("/getStaff/:id",getStaffMemebersById);
 
 router.post("/getStaffSchedule",getStaffSchedule);
 
 router.post("/getStaffApoiment",getAppoimentsAdmins);
 
-router.get("/rutaTest",testing);
+router.get("/getStaffId/:email",getStaffIdByName);
+
+router.get("/rutatest", testing)
  
 export default router;

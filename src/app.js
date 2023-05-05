@@ -1,9 +1,9 @@
 import express from 'express';
-import config from './config';
+import config from './config.js';
 
 import bodyParser from 'body-parser' 
 
-import appoimentsRoutes from './routes/appoiments.route'
+import appoimentsRoutes from './routes/appoiments.route.js'
 
 const app = express();
 
